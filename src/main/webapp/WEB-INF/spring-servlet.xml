@@ -1,0 +1,67 @@
+<!-- add spring configations -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+
+
+
+	<context:component-scan
+		base-package="com.spring.controllers" />
+
+<context:component-scan
+		base-package="com.register.models" />
+	<mvc:interceptors>
+		<mvc:interceptor>
+
+<mvc:mapping path="/*"/>
+
+<mvc:exclude-mapping path="/register"/>
+<mvc:exclude-mapping path="/loginpage"/>
+<mvc:exclude-mapping path="/login"/>
+<mvc:exclude-mapping path="/test"/>
+			<bean class="com.register.models.SessionValidator"></bean>
+
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<!-- tese or the spring configrtions -->
+
+<bean id="aurobj" class="com.hibernate.dao.Collage" scope="singleton">
+<property name="collagename" value="aurora"> </property>
+
+</bean>
+
+<bean id="cbitobj" class="com.hibernate.dao.Collage" scope="singleton">
+<property name="collagename" value="cbit"> </property>
+
+</bean>
+
+
+
+
+
+</beans>
+
+
+
+	
