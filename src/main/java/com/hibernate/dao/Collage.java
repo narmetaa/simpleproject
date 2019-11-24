@@ -8,6 +8,8 @@ public class Collage {
 	private String location;
 	
 	
+	
+	
 	public String getCollagename() {
 		return collagename;
 	}
